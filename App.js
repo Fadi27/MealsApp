@@ -3,15 +3,16 @@ import CategoriesScreen from "./screens/CategoriesScreen";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import MealsOverviewScrenn from "./screens/MealsOverviewScreen";
+import MealsOverviewScreen from "./screens/MealsOverviewScreen";
 import { CATEGORIES } from "./data/dummy-data";
+import MealDetailsScreen from "./screens/MealDetailsScreen";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="MealsCategories"
@@ -30,7 +31,7 @@ export default function App() {
           />
           <Stack.Screen
             name="MealsOverview"
-            component={MealsOverviewScrenn}
+            component={MealsOverviewScreen}
             //Das ist der Code für den Title in einem Screen zu zeigen
             // 1. Lösung, die zweite in der MealsOverviewScreen
             options={({ route, navigation }) => {
@@ -41,6 +42,7 @@ export default function App() {
               };
             }}
           />
+          <Stack.Screen name="DetailsMeal" component={MealDetailsScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

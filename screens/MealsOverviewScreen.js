@@ -3,7 +3,7 @@ import { useLayoutEffect } from "react";
 import { MEALS, CATEGORIES } from "../data/dummy-data";
 import MealItem from "../component/MealItem";
 
-function MealsOverviewScrenn({ route, navigation }) {
+function MealsOverviewScreen({ route, navigation }) {
   const catId = route.params.categoryId;
 
   const displayedMeals = MEALS.filter((meal) => {
@@ -22,7 +22,9 @@ function MealsOverviewScrenn({ route, navigation }) {
 
   function renderMealItem(itemData) {
     const item = itemData.item;
+
     const mealItemProp = {
+      id: item.id,
       title: item.title,
       imageUrl: item.imageUrl,
       duration: item.duration,
@@ -43,7 +45,7 @@ function MealsOverviewScrenn({ route, navigation }) {
   );
 }
 
-export default MealsOverviewScrenn;
+export default MealsOverviewScreen;
 
 const styles = StyleSheet.create({
   Container: {
