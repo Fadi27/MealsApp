@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
@@ -42,7 +42,15 @@ export default function App() {
               };
             }}
           />
-          <Stack.Screen name="DetailsMeal" component={MealDetailsScreen} />
+          <Stack.Screen
+            name="MealDetails"
+            component={MealDetailsScreen}
+            // options={{
+            //   headerRight: () => {
+            //     return <Button title="Tap me!" />;
+            //   },
+            // }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
