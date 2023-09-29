@@ -20,7 +20,7 @@ function MealItem({
   const navigation = useNavigation();
 
   function OnPressHandler() {
-    navigation.navigate("DetailsMeal", {
+    navigation.navigate("MealDetails", {
       mealId: id,
     });
   }
