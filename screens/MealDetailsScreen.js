@@ -4,31 +4,38 @@ import { StyleSheet } from "react-native";
 import MealDetails from "../component/MealDetails";
 import Subtitle from "../component/Subtitle";
 import List from "../component/List";
-import { useLayoutEffect } from "react";
+import { useContext, useLayoutEffect } from "react";
 import IconButton from "../component/IconButton";
+import { FavoritesContext } from "../store/context/favorites-context";
 
 function MealDetailsScreen({ route, navigation }) {
   const Route = route.params;
   const mealId = Route.mealId;
+  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  const FavoritesCtxt = useContext(FavoritesContext);
+  const isFavMeal = FavoritesCtxt.ids.includes(mealId);
 
-  function headerButtonPressHandler() {
-    return navigation.navigate("TabNavi");
+  function ChangeStateMealHandler() {
+    if (isFavMeal) {
+      FavoritesCtxt.removeFavorite(mealId);
+    } else {
+      FavoritesCtxt.addFavorite(mealId);
+    }
   }
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => {
         return (
           <IconButton
-            icon="star"
-            onPress={headerButtonPressHandler}
+            icon={isFavMeal ? "heart" : "heart-outline"}
             color="white"
+            onPress={ChangeStateMealHandler}
           />
         );
       },
     });
-  });
-
-  const selectedMeal = MEALS.find((meal) => meal.id === mealId);
+  }, [navigation, ChangeStateMealHandler]);
 
   return (
     <ScrollView style={styles.marginBottom}>
