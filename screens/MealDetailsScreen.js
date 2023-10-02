@@ -12,7 +12,7 @@ function MealDetailsScreen({ route, navigation }) {
   const mealId = Route.mealId;
 
   function headerButtonPressHandler() {
-    return navigation.navigate("MealsCategories");
+    return navigation.navigate("TabNavi");
   }
   useLayoutEffect(() => {
     navigation.setOptions({
